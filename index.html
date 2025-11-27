@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Voxel Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/tailwind.css" />
+  </head>
+  <body
+    class="relative min-h-screen h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white"
+  >
+    <!-- Layout utama: kiri (form) & kanan (canvas WebGL di belakang) -->
+    <div
+      class="pointer-events-none relative z-10 flex h-screen w-screen items-start justify-start px-6 py-8 md:px-12 md:py-10"
+    >
+      <div
+        id="ui-container"
+        class="pointer-events-auto w-full max-w-md mr-0 md:mr-10"
+      >
+        <div class="relative group">
+        <div
+          class="absolute -inset-4 bg-[radial-gradient(circle_at_top,_rgba(0,243,255,0.25),_transparent_60%)] opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 pointer-events-none"
+        ></div>
+        <div
+          class="glass-panel hover:-translate-y-1 transition-all duration-300 shadow-2xl border border-white/10"
+        >
+          <h1
+            class="font-orbitron text-2xl md:text-3xl mb-6 tracking-[0.2em] text-white drop-shadow animate-pulse"
+          >
+            Generator <span class="text-neonBlue">Karakter 3D</span>
+          </h1>
+
+          <p class="text-slate-200 mb-4 text-sm md:text-base">
+            Masukkan data untuk generate objek 3D:
+          </p>
+
+        <!-- Input Nama -->
+          <div class="relative mb-6">
+            <input
+              type="text"
+              id="inputNama"
+              placeholder=" "
+              value="Marco"
+              class="peer w-full bg-transparent border-b-2 border-slate-600 text-white font-orbitron text-base py-2 outline-none focus:border-neonBlue transition-colors"
+            />
+            <label
+              for="inputNama"
+              class="absolute left-0 top-2 text-sm text-slate-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-neonBlue peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-neonBlue"
+            >
+              Nama Depan
+            </label>
+          </div>
+
+        <!-- Input NRP -->
+          <div class="relative mb-6">
+            <input
+              type="number"
+              id="inputNRP"
+              placeholder=" "
+              value="5025221102"
+              class="peer w-full bg-transparent border-b-2 border-slate-600 text-white font-orbitron text-base py-2 outline-none focus:border-neonBlue transition-colors"
+            />
+            <label
+              for="inputNRP"
+              class="absolute left-0 top-2 text-sm text-slate-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-neonBlue peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-neonBlue"
+            >
+              NRP
+            </label>
+          </div>
+
+        <!-- Tombol -->
+          <button
+            id="btnGenerate"
+            class="w-full py-3 border-2 border-neonBlue text-neonBlue font-orbitron font-bold uppercase tracking-wide bg-transparent hover:bg-neonBlue hover:text-black hover:shadow-[0_0_20px_#00f3ff] hover:scale-[1.02] active:scale-[0.98] transition-transform transition-shadow duration-200"
+          >
+            Generate 3D
+          </button>
+
+        <!-- Status -->
+          <div
+            class="mt-6 pt-4 border-t border-dashed border-white/20 text-sm text-slate-300"
+          >
+            <span class="text-green-400 drop-shadow-[0_0_5px_#22c55e]">● Aktif</span>
+            <span> | Output:</span>
+            <span
+              id="infoText"
+              class="ml-1 text-neonPurple font-orbitron font-bold text-base"
+            >
+              Si - 3
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
